@@ -28,6 +28,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'faraday'
 gem "omniauth-google-oauth2", "~> 0.2.1"
 gem 'figaro'
+gem 'omniauth-facebook'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
