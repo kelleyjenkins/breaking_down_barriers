@@ -1,0 +1,17 @@
+<div class="form">
+  <%= form_for @employer do |f| %>
+    <%= f.label :company_name %><br/>
+    <%= f.text_field :company_name %><br/>
+    <%= f.label :email %><br/>
+    <%= f.text_field :email %><br/>
+    <%= f.label :password %><br/>
+    <%= f.password_field :password %><br/>
+    <%= f.label :street_address %><br/>
+    <%= f.text_field :street_address %><br/>
+    <%= f.label :city %><br/>
+    <%= f.text_field :city %><br/>
+    <%= f.label :state %><br/>
+    <%= f.text_field :state %><br/><br/>
+    <%= f.submit %>
+  <% end %>
+</div>
