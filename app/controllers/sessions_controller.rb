@@ -19,8 +19,13 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    if current_user
     session[:user_id] = nil
     redirect_to root_path
+    else
+      session[:employer_id] = nil
+      redirect_to root_path
+    end
   end
 
 end

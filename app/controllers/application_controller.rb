@@ -9,6 +9,6 @@ class ApplicationController < ActionController::Base
   end
 
   def current_employer
-    @current_user ||= Employer.find(session[:employer_id]) if session[:employer_id]
+    @current_employer ||= Employer.find(session[:employer_id]) if session[:employer_id]
   end
 end
