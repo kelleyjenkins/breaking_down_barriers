@@ -14,7 +14,7 @@ describe "Employer Logs In" do
       fill_in("password", :with => employer.password)
       click_on "Sign In"
 
-      expect(current_path).to eq(employer_dashboard_path)
+      expect(current_path).to eq(employers_dashboard_path)
     end
   end
 end
