@@ -6,7 +6,7 @@ describe "Employer Logs In" do
       employer = create(:employer)
 
       visit root_path
-      click_on "Employer Login"
+      click_on "Employer"
 
       expect(current_path).to eq(login_path)
 
