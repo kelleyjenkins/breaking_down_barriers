@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "Employer Logs In" do
-  scenario "user logs in from their login page" do
+  context "user logs in from their login page" do
     it "logs in and sees employer dashboard" do
       employer = create(:employer)
 
