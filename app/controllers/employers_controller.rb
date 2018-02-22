@@ -18,4 +18,10 @@ class EmployersController < ApplicationController
       render :new
     end
   end
+
+  private
+
+  def employer_params
+    params.require(:employer).permit(:company_name, :street_address, :city, :state, :email, :password)
+  end
 end
