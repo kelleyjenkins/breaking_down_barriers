@@ -29,6 +29,7 @@ gem 'faraday'
 gem "omniauth-google-oauth2", "~> 0.2.1"
 gem 'figaro'
 gem 'omniauth-facebook'
+gem 'geocoder'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
@@ -45,6 +46,7 @@ group :development, :test do
   gem 'pry'
   gem 'launchy'
   gem 'capybara'
+  gem 'factory_bot_rails'
 end
 
 group :test do
