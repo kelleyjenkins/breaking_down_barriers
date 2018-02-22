@@ -3,6 +3,7 @@ class EmployersController < ApplicationController
   end
 
   def show
+    @employer = current_employer
   end
 
   def new

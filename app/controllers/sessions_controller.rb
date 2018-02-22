@@ -12,16 +12,16 @@ class SessionsController < ApplicationController
       if @employer && @employer.authenticate(params[:password])
         session[:employer_id] = @employer.id
         redirect_to employers_dashboard_path
-      # else
-      #   redirect_to root_path
       end
+    else
+      redirect_to root_path
     end
   end
 
   def destroy
     if current_user
-    session[:user_id] = nil
-    redirect_to root_path
+      session[:user_id] = nil
+      redirect_to root_path
     else
       session[:employer_id] = nil
       redirect_to root_path
