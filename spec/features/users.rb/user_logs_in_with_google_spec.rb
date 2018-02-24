@@ -5,10 +5,10 @@ describe "User Logs In" do
     VCR.use_cassette("user_login") do
       stub_omniauth
       visit root_path
-      expect(page).to have_link("Sign in with Google")
-      click_on "Sign in with Google"
-      expect(page).to have_content("Signed in as Kelley Jenkins")
-      expect(page).to have_content("Sign out")
+      expect(page).to have_link("Employee Login")
+      click_on "Employee Login"
+
+      expect(page).to have_content("Sign Out")
     end
   end
 end
