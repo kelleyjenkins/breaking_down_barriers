@@ -20,9 +20,19 @@ class EmployersController < ApplicationController
     end
   end
 
+  def edit
+    @employer = current_employer
+  end
+
+  def update
+    @employer = current_employer.update(employer_params)
+    redirect_to employers_dashboard_path
+  end
+
   private
 
   def employer_params
     params.require(:employer).permit(:company_name, :street_address, :city, :state, :email, :password)
   end
+
 end
