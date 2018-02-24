@@ -10,3 +10,8 @@
 
 
 <h2> Company Jobs </h2>
+<%= link_to "Add New Job", new_employers_job_path %>
+<% @employer.jobs.each do |job| %>
+<%= job.title %>
+<%= job.description %>
+<% end  %>
