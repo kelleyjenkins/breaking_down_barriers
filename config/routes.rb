@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   namespace :employers do
     get "/dashboard", to: "employers#show"
+    resources :jobs
   end
 
 end
