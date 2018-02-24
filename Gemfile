@@ -30,6 +30,9 @@ gem "omniauth-google-oauth2", "~> 0.2.1"
 gem 'figaro'
 gem 'omniauth-facebook'
 gem 'geocoder'
+gem 'bootstrap-sass', '~> 3.3.7'
+gem 'jquery-rails'
+gem 'bootstrap_form'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'

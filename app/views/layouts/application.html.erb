@@ -1,28 +1,41 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BreakingDownBarriers</title>
-    <%= csrf_meta_tags %>
+    <title>Breaking Down Barriers</title>
+    <!-- <%= csrf_meta_tags %> -->
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %> -->
+    <!-- <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %> -->
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
 
   <body>
-    <div>
-    <% if current_user %>
-      Signed in as <strong><%= current_user.name %></strong>!
-      <%= link_to "Sign out", signout_path, id: "sign_out" %>
-      <% elsif current_employer %>
-        Signed in as <strong><%= current_employer.company_name %></strong>!
-      <%= link_to "Sign out", signout_path, id: "sign_out" %>
-      <% else %>
-      <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
-      <%= link_to "Employers", login_path %>
-      <% end %>
-    </div>
-    <div>
-      <%= yield %>
-    </div>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Breaking Down Barriers</a>
+        </div>
+
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Jobs</a></li>
+          <li><a href="#">Employers</a></li>
+          <li><a href="#">Potential Employees</a></li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          <% if current_user || current_employer != nil %>
+            <li><a href= "/signout"> <span class="glyphicon glyphicon-user"></span> Sign Out</a></li>
+          <% else %>
+            <li><a href="/auth/google_oauth2"><span class="glyphicon glyphicon-user"></span> Employee Login</a></li>
+            <li><a href="/login"> <span class="glyphicon glyphicon-user"></span> Employer Login</a></li>
+          <%end %>
+        </ul>
+      </div>
+    </nav>
+        <%= yield %>
   </body>
 </html>
