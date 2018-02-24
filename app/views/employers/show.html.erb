@@ -1,0 +1,12 @@
+<h1><%= @employer.company_name %> Dashboard</h1>
+
+<h2> Commpany Info </h2>
+<%= @employer.email %><br/>
+<%= @employer.street_address %>,
+<%= @employer.city %>,
+<%= @employer.state %> <br/><br/>
+
+<%= link_to "Edit Company Information", edit_employer_path(@employer) %>
+
+
+<h2> Company Jobs </h2>

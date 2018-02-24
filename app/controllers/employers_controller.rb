@@ -3,6 +3,7 @@ class EmployersController < ApplicationController
   end
 
   def show
+    @employer = current_employer
   end
 
   def new
@@ -17,5 +18,11 @@ class EmployersController < ApplicationController
     else
       render :new
     end
+  end
+
+  private
+
+  def employer_params
+    params.require(:employer).permit(:company_name, :street_address, :city, :state, :email, :password)
   end
 end

@@ -14,7 +14,7 @@ describe "Employer Creates an Account" do
     fill_in "employer[city]", :with => "Denver"
     fill_in "employer[state]", :with => "CO"
     fill_in"employer[password]", :with => "test"
-    save_and_open_page
+    
     click_on "Create Account"
 
     expect(current_path).to eq(employers_dashboard_path)
