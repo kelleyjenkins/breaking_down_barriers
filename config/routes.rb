@@ -6,9 +6,9 @@ Rails.application.routes.draw do
   post '/login', to: "sessions#create"
 
   resources :users do
-    resource :employees
+    resource :profiles
   end
-  resources :employees
+  resources :profiles
 
   resources :sessions, only: [:new, :create, :destroy]
   resources :home, only: [:show]
