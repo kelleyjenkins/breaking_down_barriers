@@ -3,6 +3,7 @@ require 'rails_helper'
 describe "Employer Creates a Job" do
   it "can create a new job" do
     employer = create(:employer)
+    job3 = create(:job, employer: employer)
     allow_any_instance_of(ApplicationController).to receive(:current_employer).and_return(employer)
 
     visit employers_dashboard_path
