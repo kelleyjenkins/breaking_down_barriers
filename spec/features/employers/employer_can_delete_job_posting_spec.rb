@@ -14,7 +14,5 @@ describe "Employer deletes job posting" do
     first('.job').click_link "Delete"
 
     expect(current_path).to eq(employer_jobs_path(employer))
-
-
   end
 end

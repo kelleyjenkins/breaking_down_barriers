@@ -1,0 +1,12 @@
+<%= @user.name %>
+
+<%= link_to "Create Profile", new_user_profiles_path(@user) %>
+
+<% if @user.profile != nil %>
+<%= @user.profile.street_address %>
+<%= @user.profile.city %>
+<%= @user.profile.state %>
+<%= @user.profile.zip %>
+<%= @user.profile.summary %>
+<%= @user.profile.skills %>
+<% end  %>
