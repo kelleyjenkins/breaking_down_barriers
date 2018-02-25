@@ -18,6 +18,7 @@ class JobsController < ApplicationController
   end
 
   def edit
+    @employer = current_employer
     @job = Job.find_by(id: params[:id])
   end
 

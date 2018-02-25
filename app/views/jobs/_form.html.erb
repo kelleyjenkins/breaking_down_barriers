@@ -1,5 +1,5 @@
 <div class="form">
-  <%= form_for([@job]) do |f| %>
+  <%= form_for [@employer, @job] do |f| %>
     <%= f.label :title %><br/>
     <%= f.text_field :title %><br/>
     <%= f.label :description %><br/>
