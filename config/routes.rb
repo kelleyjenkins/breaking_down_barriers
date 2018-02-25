@@ -11,11 +11,13 @@ Rails.application.routes.draw do
   root "home#index"
 
   resources :jobs
-  resources :employers
 
-  namespace :employers do
-    # get "/dashboard", to: "employers#show"
+  resources :employers do
     resources :jobs
   end
+
+  # namespace :employers do
+  #   resources :jobs, only: [:new, :create, :edit, :update, :destroy]
+  # end
 
 end

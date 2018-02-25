@@ -10,7 +10,7 @@ describe "Employer Creates a Job" do
 
     click_on "Add New Job"
 
-    expect(current_path).to eq(new_employers_job_path)
+    expect(current_path).to eq(new_employer_job_path(employer))
 
     fill_in "job[title]", :with => "Web Developer"
     fill_in "job[description]", :with => "It's an awesome job!"

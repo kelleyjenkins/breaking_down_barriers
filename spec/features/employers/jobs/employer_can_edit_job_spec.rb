@@ -10,7 +10,7 @@ describe "Employer Edits Job" do
 
     click_on "Edit Job"
 
-    expect(current_path).to eq(edit_employers_job_path(job))
+    expect(current_path).to eq(edit_employer_job_path(employer, job))
 
     fill_in "job[title]", with: "New Title"
     click_on "Update"
