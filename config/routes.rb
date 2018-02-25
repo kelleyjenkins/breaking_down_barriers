@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   root "home#index"
 
-  resources :jobs
+  resources :jobs, only: [:index]
 
   resources :employers do
     resources :jobs
