@@ -1,5 +1,7 @@
 FactoryBot.define do
   factory :job do
-    employer nil
+    title "Job1"
+    description "Description"
+    employer
   end
 end
