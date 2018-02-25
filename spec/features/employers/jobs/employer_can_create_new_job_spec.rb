@@ -6,7 +6,7 @@ describe "Employer Creates a Job" do
     job3 = create(:job, employer: employer)
     allow_any_instance_of(ApplicationController).to receive(:current_employer).and_return(employer)
 
-    visit employers_dashboard_path
+    visit employer_path(employer)
 
     click_on "Add New Job"
 
@@ -17,7 +17,7 @@ describe "Employer Creates a Job" do
 
     click_on "Create Job"
 
-    expect(current_path).to eq(employers_dashboard_path)
+    expect(current_path).to eq(employer_path(employer))
     expect(page).to have_content("Web Developer")
     expect(page).to have_content("It's an awesome job!")
   end

@@ -17,6 +17,6 @@ describe "Employer Creates an Account" do
 
     click_on "Create Account"
 
-    expect(current_path).to eq(employers_dashboard_path)
+    expect(current_path).to eq(employer_path(Employer.last.id))
   end
 end

@@ -6,7 +6,7 @@ describe "Employer Edits Job" do
     allow_any_instance_of(ApplicationController).to receive(:current_employer).and_return(employer)
     job = create(:job, employer: employer)
 
-    visit employers_dashboard_path
+    visit employer_path(employer)
 
     click_on "Edit Job"
 
@@ -15,7 +15,7 @@ describe "Employer Edits Job" do
     fill_in "job[title]", with: "New Title"
     click_on "Update"
 
-    expect(current_path).to eq(employers_dashboard_path)
+    expect(current_path).to eq(employer_path(employer))
 
     expect(page).to have_content("New Title")
   end
