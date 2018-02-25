@@ -1,17 +1,31 @@
 class ProfilesController < ApplicationController
 
   def new
-    @user = User.find(params[:user_id])
     @profile = Profile.new
   end
 
   def create
-    user = User.find(params[:user_id])
+    user = current_user
     profile = user.build_profile(profile_params)
     if profile.save
       redirect_to "/users/#{user.id}"
     else
       render :new
+    end
+  end
+
+  def edit
+    @profile = current_user.profile
+  end
+
+  def update
+    user = current_user
+    @profile = user.profile
+    @profile.update(profile_params)
+    if @profile.save
+      redirect_to user_path(current_user)
+    else
+      render :edit
     end
   end
 
