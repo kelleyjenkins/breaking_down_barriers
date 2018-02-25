@@ -4,6 +4,7 @@ class EmployersController < ApplicationController
 
   def show
     @employer = current_employer
+    @jobs = @employer.jobs
   end
 
   def new
