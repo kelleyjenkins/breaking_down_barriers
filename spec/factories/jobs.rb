@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :job do
-    title "Job1"
-    description "Description"
+    sequence(:title) {|n| "title#{n}"}
+    sequence(:description) {|n| "description#{n}"}
     employer
   end
 end
