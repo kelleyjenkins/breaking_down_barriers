@@ -1,15 +1,23 @@
 class JobsController < ApplicationController
   def index
-    @jobs = Job.all
+    employer = Employer.find(params[:employer_id])
+    @jobs = employer.jobs
+  end
+
+  def show
+    employer = Employer.find(params[:employer_id])
+    @job = employer.jobs.find(params[:id])
   end
 
   def new
-    @employer = current_employer
-    @job = current_employer.jobs.new
+    employer = Employer.find(params[:employer_id])
+    @job = employer.jobs.new
   end
 
   def create
-    @job = current_employer.jobs.new(job_params)
+    employer = Employer.find(params[:employer_id])
+
+    @job = employer.jobs.create(job_params)
     if @job.save
       redirect_to employer_path(current_employer)
     else
@@ -18,18 +26,27 @@ class JobsController < ApplicationController
   end
 
   def edit
-    @employer = current_employer
-    @job = Job.find_by(id: params[:id])
+    employer = Employer.find(params[:employer_id])
+    @job = employer.jobs.find(params[:id])
   end
 
   def update
-    @job = Job.find_by(id: params[:id])
+    employer = Employer.find(params[:employer_id])
+    @job = employer.jobs.find(params[:id])
     @job.update(job_params)
     if @job.save
       redirect_to employer_path(current_employer)
     else
       render :edit
     end
+  end
+
+  def destroy
+    employer = Employer.find(params[:employer_id])
+    @job = employer.jobs.find(params[:id])
+    @job.destroy
+
+    redirect_to employer_jobs_path(employer)
   end
 
   private

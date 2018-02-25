@@ -15,6 +15,6 @@
 <% @employer.jobs.each do |job| %>
 <%= job.title %>
 <%= job.description %>
-</div>
 <%= link_to "Edit Job", edit_employer_job_path(@employer, job) %>
+<%= link_to 'Delete', [job.employer, job], :method => :delete %></div>
 <% end  %>
