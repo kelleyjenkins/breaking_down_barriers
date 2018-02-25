@@ -3,7 +3,7 @@ require 'rails_helper'
 describe "Employer Creates an Account" do
   it "can create a new account" do
     visit root_path
-    click_on "Employers"
+    click_on "Employer Login"
 
     expect(current_path).to eq(login_path)
 
@@ -14,9 +14,9 @@ describe "Employer Creates an Account" do
     fill_in "employer[city]", :with => "Denver"
     fill_in "employer[state]", :with => "CO"
     fill_in"employer[password]", :with => "test"
-    
+
     click_on "Create Account"
 
-    expect(current_path).to eq(employers_dashboard_path)
+    expect(current_path).to eq(employer_path(Employer.last.id))
   end
 end

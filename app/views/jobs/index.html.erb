@@ -1,0 +1,5 @@
+<% @jobs.each do |job| %>
+Title: <%= job.title %><br/>
+Description: <%= job.description %><br/>
+Company: <%= job.employer.company_name %><br/><br/>
+<% end %>

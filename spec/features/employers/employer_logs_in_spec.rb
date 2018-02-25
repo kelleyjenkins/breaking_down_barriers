@@ -6,7 +6,7 @@ describe "Employer Logs In" do
       employer = create(:employer)
 
       visit root_path
-      click_on "Employer"
+      click_on "Employer Login"
 
       expect(current_path).to eq(login_path)
 
@@ -14,7 +14,7 @@ describe "Employer Logs In" do
       fill_in("password", :with => employer.password)
       click_on "Sign In"
 
-      expect(current_path).to eq(employers_dashboard_path)
+      expect(current_path).to eq(employer_path(employer))
     end
   end
 end

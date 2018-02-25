@@ -10,3 +10,11 @@
 
 
 <h2> Company Jobs </h2>
+<%= link_to "Add New Job", new_employer_job_path(@employer) %>
+<div class="job">
+<% @employer.jobs.each do |job| %>
+<%= job.title %>
+<%= job.description %>
+</div>
+<%= link_to "Edit Job", edit_employer_job_path(@employer, job) %>
+<% end  %>
