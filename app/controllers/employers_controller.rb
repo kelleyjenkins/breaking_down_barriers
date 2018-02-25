@@ -1,9 +1,10 @@
 class EmployersController < ApplicationController
   def index
+    @employers = Employer.all
   end
 
   def show
-    @employer = current_employer
+    @employer = Employer.find(params[:id])
     @jobs = @employer.jobs
   end
 
@@ -15,7 +16,7 @@ class EmployersController < ApplicationController
     @employer = Employer.new(employer_params)
     if @employer.save
       session[:employer_id] = @employer.id
-      redirect_to employers_dashboard_path
+      redirect_to employer_path(@employer)
     else
       render :new
     end
@@ -27,7 +28,7 @@ class EmployersController < ApplicationController
 
   def update
     @employer = current_employer.update(employer_params)
-    redirect_to employers_dashboard_path
+    redirect_to employer_path(current_employer)
   end
 
   private

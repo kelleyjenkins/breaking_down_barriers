@@ -1,0 +1,7 @@
+<% @employers.each do |employer| %>
+<%= employer.company_name %>
+<%= employer.street_address %>
+<%= employer.city %>
+<%= employer.state %>
+<%= link_to "#{employer.company_name}'s Jobs", employers_jobs_path(employer)%>
+<% end %>

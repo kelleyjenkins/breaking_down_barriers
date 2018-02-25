@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       @employer = Employer.find_by(email: params[:email])
       if @employer && @employer.authenticate(params[:password])
         session[:employer_id] = @employer.id
-        redirect_to employers_dashboard_path
+        redirect_to employer_path(@employer)
       end
     else
       redirect_to root_path

@@ -1,8 +1,14 @@
 class Employers::JobsController < ApplicationController
+  def index
+    employer = Employer.find(params[:id]).jobs
+    @jobs = employer.jobs
+  end
+
 
   def show
     @job = current_employer.jobs.find_by(id: params[:id])
   end
+
   def new
     @employer = current_employer
     @job = current_employer.jobs.new
@@ -11,7 +17,7 @@ class Employers::JobsController < ApplicationController
   def create
     @job = current_employer.jobs.new(job_params)
     if @job.save
-      redirect_to employers_dashboard_path
+      redirect_to employer_path(current_employer)
     else
       render :new
     end
@@ -25,7 +31,7 @@ class Employers::JobsController < ApplicationController
     @job = Job.find_by(id: params[:id])
     @job.update(job_params)
     if @job.save
-    redirect_to employers_dashboard_path
+      redirect_to employer_path(current_employer)
     else
       render :edit
     end
