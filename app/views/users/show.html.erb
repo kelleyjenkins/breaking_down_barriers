@@ -12,3 +12,30 @@
 
 <%= link_to "Edit Profile", edit_user_profiles_path(@user) %>
 <% end  %>
+
+<div id="map" style="height: 400px; width: 500px;"></div>
+
+<script>
+function initMap() {
+  var location = {lat: 44.4426932, lng: -73.209094};
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 8,
+    center: location
+  });
+  var marker = new google.maps.Marker({
+    position: location,
+    map: map
+  });
+  var circle = new google.maps.Circle({
+    map: map,
+    radius: 24140.2,    // 15 miles in metres
+    fillColor: '#AA0000'
+  });
+  circle.bindTo('center', marker, 'position');
+}
+</script>
+</div>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=<%="#{ENV["google_map_key"]}"%>&callback=initMap">
+</script>
+</body>
