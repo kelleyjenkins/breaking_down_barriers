@@ -2,21 +2,20 @@
 
 <div class="card">
   <h2><%=@user.name %></h2>
-  <% if @user.profile != nil %>
-    <%= image_tag @user.profile.profile_pic  %>
+    <% if @user.profile != nil %>
+      <%= image_tag @user.profile.profile_pic  %>
   <p class="summary"> <%= @user.profile.summary %></p>
-  <p> <%= @user.profile.skills %></p>
-  <p> <%= @user.profile.full_address %></p>
-  <% end %>
-  <% if @user.profile.nil? %>
-  <p><button><%= link_to "Create Profile", new_user_profiles_path(@user)  %></button></p>
-  <% end %>
-  <% if @user == current_user %>
-  <p><button>
-    <%= link_to "Edit Profile", edit_user_profiles_path(@user) %>
-    </button></p>
+      <p> Skills: <%= @user.profile.skills %></p>
+      <p> Address: <%= @user.profile.full_address %></p>
+    <% end %>
+    <% if @user.profile.nil? %>
+      <p><button><%= link_to "Create Profile", new_user_profiles_path(@user)  %></button></p>
+    <% end %>
+    <% if @user == current_user %>
+      <p><button><%= link_to "Edit Profile", edit_user_profiles_path(@user) %></button></p>
     <% end  %>
 </div>
+
 
 <div id="map" style="height: 400px; width: 500px;"></div>
 
@@ -40,6 +39,7 @@ function initMap() {
 }
 </script>
 </div>
+
 <script async defer
 src="https://maps.googleapis.com/maps/api/js?key=<%="#{ENV["google_map_key"]}"%>&callback=initMap">
 </script>

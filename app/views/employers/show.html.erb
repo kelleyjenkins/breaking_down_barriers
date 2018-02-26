@@ -1,6 +1,6 @@
 <h1><%= @employer.company_name %> Dashboard</h1>
 
-<h2> Company Info </h2>
+<h3> Company Info </h3>
 <%= @employer.email %><br/>
 <%= @employer.street_address %>,
 <%= @employer.city %>,
@@ -9,8 +9,8 @@
 <%= link_to "Edit Company Information", edit_employer_path(@employer) %>
 
 
-<h2> Company Jobs </h2>
-<%= link_to "Add New Job", new_employer_job_path(@employer) %>
+<h3> Jobs </h3>
+<button class="new-job"><%= link_to "Add New Job", new_employer_job_path(@employer) %></button>
 <div class="job">
 <% @employer.jobs.each do |job| %>
 <%= job.title %>

@@ -1,7 +1,8 @@
-<% @employers.each do |employer| %>
-<%= employer.company_name %>
-<%= employer.street_address %>
-<%= employer.city %>
-<%= employer.state %>
-<%= link_to "#{employer.company_name}'s Jobs", employer_path(employer)%>
-<% end %>
+
+<ul class="list-group">
+  <% @employers.each do |employer| %>
+  <li class="list-group-item"><%= employer.company_name %><br/><%= employer.street_address %>, <%= employer.city %>, <%= employer.state %><br/>
+  <%= link_to "#{employer.company_name}'s Jobs", employer_path(employer)%>
+  </li>
+  <%end %>
+</ul>

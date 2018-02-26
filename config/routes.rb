@@ -13,11 +13,13 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :home, only: [:show]
 
+  resources :jobs, only: [:index]
+
 
   root "home#index"
 
   resources :employers do
-    resources :jobs
+    resources :jobs, only: [:edit, :new, :create, :update, :destory]
   end
 
 end
