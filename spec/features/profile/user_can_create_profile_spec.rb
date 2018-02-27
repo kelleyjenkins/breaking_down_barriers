@@ -7,7 +7,9 @@ describe "User Creates Profile" do
 
     visit user_path(user)
 
-    click_on "Create Profile"
+    within(".c-profile") do
+      click_on "Create Profile"
+    end
 
     fill_in "profile[skills]", :with => "ruby, rails, life"
     fill_in "profile[summary]", :with => "Please hire me!"
