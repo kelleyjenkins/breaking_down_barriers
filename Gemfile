@@ -52,6 +52,8 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'simplecov'
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
+  gem 'newrelic_rpm'
+
 end
 
 group :test do
