@@ -4,9 +4,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = current_user
 
-    jobs = Job.all
+    # jobs = Job.all
 
     if @user.profile != nil
       jobs_near = Job.near([@user.profile.latitude, @user.profile.longitude], 20)
@@ -16,6 +16,6 @@ class UsersController < ApplicationController
         @job_markers << [job.title, job.employer.company_name, job.latitude, job.longitude ]
       end
     end
-    
+
   end
 end

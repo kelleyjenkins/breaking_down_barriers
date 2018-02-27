@@ -18,9 +18,9 @@
 
 <h2>Mentors</h2>
 <ul>
-  <% for mentorship in @user.mentorships %>
+  <%  @user.mentorships.each do |mentorship| %>
     <li>
-      <%=h mentorship.mentor.name %>
+      <%= mentorship.mentor.name %>
       (<%= link_to "remove", mentorship, :method => :delete %>)
     </li>
   <% end %>
@@ -30,6 +30,17 @@
 <% if @user.profile != nil %>
 <div id="map" style="height: 400px; width: 500px;"></div>
 <script>
+
+fake_api_data = JSON.stringify( [
+    {
+       "lat": 234.235,
+       "lng": 23.55,
+       "company_name": "Target",
+       "title": "Teacher",
+       "job_url": "/jobs/1"
+    }
+])
+
 function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
   zoom: 10,
@@ -38,7 +49,8 @@ function initMap() {
   });
 
   var locations = <%= raw @job_markers %>
-
+  [[name, lat, long].
+]
 
   var infowindow = new google.maps.InfoWindow();
 
