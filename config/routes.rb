@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   root "home#index"
 
   resources :employers do
-    resources :jobs, only: [:edit, :new, :create, :update, :destory]
+    resources :jobs, only: [:edit, :new, :create, :update, :destroy]
   end
 
 end
