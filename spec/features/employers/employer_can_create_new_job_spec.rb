@@ -18,7 +18,6 @@ describe "Employer Creates a Job" do
     fill_in "job[description]", :with => "It's an awesome job!"
 
     click_button "Create Job"
-    save_and_open_page
 
     expect(current_path).to eq(employer_jobs_path(employer))
     expect(page).to have_content("Web Developer")
