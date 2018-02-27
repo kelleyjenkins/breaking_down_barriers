@@ -8,7 +8,9 @@ describe "Employer Creates a Job" do
 
     visit employer_path(employer)
 
+    within(".new-job") do
     click_on "Add New Job"
+    end
 
     expect(current_path).to eq(new_employer_job_path(employer))
 
