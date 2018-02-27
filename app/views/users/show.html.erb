@@ -1,23 +1,28 @@
-<%= @user.name %>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<%= link_to "Create Profile", new_user_profiles_path(@user) %>
+<div class="card">
+  <h2><%=@user.name %></h2>
+    <% if @user.profile != nil %>
+      <%= image_tag @user.profile.profile_pic  %>
+  <p class="summary"> <%= @user.profile.summary %></p>
+      <p> Skills: <%= @user.profile.skills %></p>
+      <p> Address: <%= @user.profile.full_address %></p>
+    <% end %>
+    <% if @user.profile.nil? %>
+      <p><button><%= link_to "Create Profile", new_user_profiles_path(@user)  %></button></p>
+    <% end %>
+    <% if @user == current_user %>
+      <p><button><%= link_to "Edit Profile", edit_user_profiles_path(@user) %></button></p>
+    <% end  %>
+</div>
 
-<% if @user.profile != nil %>
-<%= @user.profile.street_address %>
-<%= @user.profile.city %>
-<%= @user.profile.state %>
-<%= @user.profile.zip %>
-<%= @user.profile.summary %>
-<%= @user.profile.skills %>
-
-<%= link_to "Edit Profile", edit_user_profiles_path(@user) %>
-<% end  %>
 
 <div id="map" style="height: 400px; width: 500px;"></div>
 
 <script>
 function initMap() {
-  var location = {lat: 44.4426932, lng: -73.209094};
+  var location = {lat: <%= @user.profile.latitude %>, lng: <%= @user.profile.longitude %>};
+    var second_location = {lat: 44.2795, lng: 73.9799};
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 8,
     center: location
@@ -25,6 +30,7 @@ function initMap() {
   var marker = new google.maps.Marker({
     position: location,
     map: map
+
   });
   var circle = new google.maps.Circle({
     map: map,
@@ -32,10 +38,12 @@ function initMap() {
     fillColor: '#AA0000'
   });
   circle.bindTo('center', marker, 'position');
+
+  var second_location = {lat: 44.2795, lng: 73.9799};
 }
 </script>
 </div>
+
 <script async defer
 src="https://maps.googleapis.com/maps/api/js?key=<%="#{ENV["google_map_key"]}"%>&callback=initMap">
 </script>
-</body>

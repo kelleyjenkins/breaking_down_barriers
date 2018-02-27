@@ -1,7 +1,8 @@
 class JobsController < ApplicationController
   def index
-    employer = Employer.find(params[:employer_id])
-    @jobs = employer.jobs
+    # employer = Employer.find(params[:employer_id])
+    # @jobs = employer.jobs
+    @jobs =Job.all
   end
 
   def show
