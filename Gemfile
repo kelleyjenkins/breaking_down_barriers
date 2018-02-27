@@ -50,6 +50,8 @@ group :development, :test do
   gem 'launchy'
   gem 'capybara'
   gem 'factory_bot_rails'
+  gem 'simplecov'
+  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
 end
 
 group :test do

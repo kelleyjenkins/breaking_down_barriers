@@ -11,4 +11,35 @@ RSpec.describe Employer, type: :model do
     expect(employer.email).to eq("target@target.com")
     expect(employer.password_digest).to eq("test")
   end
+
+  it "has to have a name to be valid" do
+    employer = build(:employer, company_name: nil)
+
+    expect(employer).to be_invalid
+  end
+
+  it "has to have an email to be valid" do
+    employer = build(:employer, email: nil)
+
+    expect(employer).to be_invalid
+  end
+
+  it "has to have a passowrd to be valid" do
+    employer = build(:employer, password: nil)
+
+    expect(employer).to be_invalid
+  end
+
+  it "must have a unique company name to be valid" do
+    store1 = create(:employer, company_name: "Paws")
+    store2 = build(:employer, company_name: "Paws")
+
+    expect(store2).to be_invalid
+  end
+
+  describe "relationships" do
+    it {should have_many(:jobs)}
+  end
+
+
 end
