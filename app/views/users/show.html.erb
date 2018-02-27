@@ -18,16 +18,16 @@
 
 
 <% if @user.profile != nil %>
-<div id="map" style="height: 400px; width: 500px;">
-</div>
-<script type="text/javascript">
+<div id="map" style="height: 400px; width: 500px;"></div>
+<script>
+function initMap() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+  zoom: 10,
+  center: new google.maps.LatLng(<%=@user.profile.latitude%>, <%=@user.profile.longitude%>),
+  mapTypeId: google.maps.MapTypeId.ROADMAP
+  });
   var locations = <%= raw @job_markers %>
 
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 10,
-    center: new google.maps.LatLng(<%=@user.profile.latitude%>, <%=@user.profile.longitude%>),
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  });
 
   var infowindow = new google.maps.InfoWindow();
 
@@ -46,5 +46,11 @@
       }
     })(marker, i));
   }
+}
 </script>
+
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?&callback=initMap&key=<%=ENV["google_map_key"]%>">
+</script>
+
 <%end %>
