@@ -2,17 +2,17 @@
 
 <div class="card">
   <h2><%=@user.name %></h2>
-    <% if @user.profile != nil %>
+    <% unless @user.profile.blank? %>
       <%= image_tag @user.profile.profile_pic  %>
   <p class="summary"> <%= @user.profile.summary %></p>
       <p> Skills: <%= @user.profile.skills %></p>
       <p> Address: <%= @user.profile.full_address %></p>
     <% end %>
-    <% if @user.profile.nil? %>
-      <p><button><%= link_to "Create Profile", new_user_profiles_path(@user)  %></button></p>
+    <% if @user.profile.nil? && @user == current_user %>
+      <p><button class="c-profile"><%= link_to "Create Profile", new_user_profiles_path(@user)  %></button></p>
     <% end %>
     <% if @user == current_user %>
-      <p><button><%= link_to "Edit Profile", edit_user_profiles_path(@user) %></button></p>
+      <p><button class="e-profile"><%= link_to "Edit Profile", edit_user_profiles_path(@user) %></button></p>
     <% end  %>
 </div>
 

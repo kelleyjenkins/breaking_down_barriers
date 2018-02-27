@@ -7,10 +7,11 @@ describe "User Edits Profile" do
     profile = create(:profile, user: user)
 
     visit user_path(user)
+    within(".e-profile") do
+      click_on "Edit Profile"
+    end
 
-    click_on "Edit Profile"
-
-    expect(current_path).to eq(edit_user_profiles_path(user, profile))
+    expect(current_path).to eq(edit_user_profiles_path(user))
 
     fill_in "profile[street_address]", with: "53 New Street"
     click_on "Update"
