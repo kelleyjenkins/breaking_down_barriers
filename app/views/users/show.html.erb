@@ -16,6 +16,16 @@
     <% end  %>
 </div>
 
+<h2>Mentors</h2>
+<ul>
+  <% for mentorship in @user.mentorships %>
+    <li>
+      <%=h mentorship.mentor.name %>
+      (<%= link_to "remove", mentorship, :method => :delete %>)
+    </li>
+  <% end %>
+</ul>
+
 
 <% if @user.profile != nil %>
 <div id="map" style="height: 400px; width: 500px;"></div>
@@ -26,6 +36,7 @@ function initMap() {
   center: new google.maps.LatLng(<%=@user.profile.latitude%>, <%=@user.profile.longitude%>),
   mapTypeId: google.maps.MapTypeId.ROADMAP
   });
+
   var locations = <%= raw @job_markers %>
 
 
