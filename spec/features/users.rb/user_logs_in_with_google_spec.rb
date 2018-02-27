@@ -4,7 +4,9 @@ describe "User Logs In" do
   scenario "using Google account" do
     VCR.use_cassette("user_login") do
       stub_omniauth
+
       visit root_path
+
       expect(page).to have_link("Employee Login")
       click_on "Employee Login"
 
