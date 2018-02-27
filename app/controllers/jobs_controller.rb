@@ -47,11 +47,11 @@ class JobsController < ApplicationController
     @job = employer.jobs.find(params[:id])
     @job.destroy
 
-    redirect_to employer_jobs_path(employer)
+    redirect_to employer_path(employer)
   end
 
   private
   def job_params
-    params.require(:job).permit(:title, :description)
+    params.require(:job).permit(:title, :description, :full_address)
   end
 end
