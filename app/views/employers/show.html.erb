@@ -20,5 +20,5 @@ Description: <%= job.description %></br>
 <% if @employer == current_employer %>
 <%= link_to "Edit Job", edit_employer_job_path(@employer, job) %>
 <%= link_to 'Delete', [job.employer, job], :method => :delete %></div></br>
-<% end  %></br><br>
+<% end  %></br>
 <% end %>

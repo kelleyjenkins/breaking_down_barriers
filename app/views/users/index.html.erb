@@ -10,11 +10,11 @@
     <p class="card-text"> <%= user.profile.summary %></p>
     <a href= "/users/<%="#{user.id}"%>" class="btn btn-primary">See Full Profile</a>
     <% end %><br/>
-    <% unless user == current_user %>
-      <% if user.profile.mentor == "Active" %>
+
+      <% if user != current_user && user.profile.mentor == "Active" %>
         <%= link_to "Add Mentor", mentorships_path(:mentor_id => user), :method => :post %></br>
       <% end %>
-    <% end %>
+
   </div>
     <% end %>
 </div>
