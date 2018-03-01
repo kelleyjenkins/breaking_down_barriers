@@ -2,7 +2,8 @@
 
 Title: <%= @job.title %><br/>
 Description: <%= @job.description %><br/>
-Company: <%= @job.employer.company_name %><br/><br/>
+Company: <%= @job.employer.company_name %><br/>
+Address: <%= @job.full_address %><br/></br>
 <%= link_to "Back To Jobs", jobs_path %>
 
 <div id="map" style="height: 400px; width: 500px;"></div>

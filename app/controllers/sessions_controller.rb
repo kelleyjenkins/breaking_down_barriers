@@ -6,12 +6,12 @@ class SessionsController < ApplicationController
     if params[:provider].present?
       user = User.from_omniauth(request.env["omniauth.auth"])
       session[:user_id] = user.id
-      redirect_to user_path(user)
+      redirect_to root_path
     elsif params[:email].present?
       @employer = Employer.find_by(email: params[:email])
       if @employer && @employer.authenticate(params[:password])
         session[:employer_id] = @employer.id
-        redirect_to employer_path(@employer)
+        redirect_to root_path
       end
     else
       redirect_to root_path
