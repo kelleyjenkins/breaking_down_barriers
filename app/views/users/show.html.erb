@@ -30,19 +30,25 @@
 
 <% if @user == current_user %>
 <h3>Jobs Near You: </h3>
+
 <% if @user.profile != nil %>
 <div id="map" style="height: 400px; width: 500px;"></div>
+
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?&callback=initMap&key=<%=ENV["google_map_key"]%>">
+</script>
 <script>
 //
 // var locations = []
 //
-// function fetchJobs() {
-//    fetch('http://localhost:3000/api/v1/users')
-//   .then((response) => response.json())
-//   .then((results) => { Object.keys(results).forEach(function(key){locations.push([results[key]["title"],results[key]["description"], results[key]["latitude"],results[key]["longitude"]])})})
-//   .catch((error) => console.error({ error }))}
-//
-// fetchJobs()
+function fetchJobs() {
+   fetch('http://localhost:3000/api/v1/users')
+  .then((response) => response.json())
+  .then((results) => { Object.keys(results).forEach(function(key){locations.push([results[key]["title"],results[key]["description"], results[key]["latitude"],results[key]["longitude"]])})})
+  .then... map
+  .catch((error) => console.error({ error }))}
+
+fetchJobs()
 
 // locations = Promise.resolve(awesome).then(initMap());
 //
@@ -84,7 +90,7 @@
 //     }
 // ])
 
-// parsed = JSON.parse(fake_api_data)
+parsed = JSON.parse(fake_api_data)
 
 function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
@@ -93,8 +99,8 @@ function initMap() {
   mapTypeId: google.maps.MapTypeId.ROADMAP
   });
 
-  var locations = <%= raw @job_markers %>
-
+  // var locations = <%= raw @job_markers %>
+  //
   // var locations = [
   //   ['Me', '<%= @user.name %>', <%=@user.profile.latitude%>, <%=@user.profile.longitude%>]
   // ];
@@ -123,9 +129,6 @@ function initMap() {
 }
 </script>
 
-<script async defer
-src="https://maps.googleapis.com/maps/api/js?&callback=initMap&key=<%=ENV["google_map_key"]%>">
-</script>
 
 <%end %>
 <%end %>

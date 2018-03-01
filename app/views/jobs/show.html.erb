@@ -11,7 +11,6 @@ Address: <%= @job.full_address %><br/></br>
 <script>
 function initMap() {
   var location = {lat: <%= @job.latitude %>, lng: <%= @job.longitude %>};
-    var second_location = {lat: 44.2795, lng: 73.9799};
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 12,
     center: location
