@@ -1,4 +1,15 @@
+* {
+ font-family: "Book Antiqua", serif;
+}
+
+img {
+    width: auto;
+    height: auto;
+    height: 150px
+  }
+
 body {
+  font-family: "Book Antiqua", serif;
   padding-left: 15px;
   padding-right: 15px;
   padding-bottom: 50px;
@@ -44,6 +55,24 @@ button {
     font-size: 18px;
 }
 
+
+.form {
+  font-size: 14px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 500px;
+  background-color: #BEB9B5;
+  border: 1px solid black;
+  margin: auto
+}
+
+h1 {
+  text-align: center
+}
+
 // a {
 //     text-decoration: none;
 //     font-size: 22px;
@@ -84,4 +113,47 @@ button:hover, a:hover {
 
 .card-img-top {
   padding-top: 35px;
+}
+
+.home-page {
+  display: flex;
+  justify-content: center;
+
+  margin: auto
+
+}
+
+.home-index {
+  display: inline-flex;
+  align-items: center;
+  flex-flow: column;
+  text-align: center;
+  width: 300px;
+  margin: 30px;
+  background-color: #BEB9B5;
+  border: 1px solid black;
+}
+
+p.card-text {
+  padding: 20px
+}
+
+.box {
+  display: flex;
+  justify-content: center;
+  width: 500px;
+  margin: auto;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+p.intro {
+  padding: 30px;
+  border: 1px solid black;
+  text-align: center
+}
+
+.create {
+  display: flex;
+  justify-content: center;
+  margin: auto;
 }

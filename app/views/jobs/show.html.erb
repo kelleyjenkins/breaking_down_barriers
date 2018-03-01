@@ -2,4 +2,28 @@
 
 Title: <%= @job.title %><br/>
 Description: <%= @job.description %><br/>
-Company: <%= @job.employer.company_name %><br/><br/>
+Company: <%= @job.employer.company_name %><br/>
+Address: <%= @job.full_address %><br/></br>
+<%= link_to "Back To Jobs", jobs_path %>
+
+<div id="map" style="height: 400px; width: 500px;"></div>
+
+<script>
+function initMap() {
+  var location = {lat: <%= @job.latitude %>, lng: <%= @job.longitude %>};
+    var second_location = {lat: 44.2795, lng: 73.9799};
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 12,
+    center: location
+  });
+  var marker = new google.maps.Marker({
+    position: location,
+    map: map
+
+  });
+}
+</script>
+
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?&callback=initMap&key=<%=ENV["google_map_key"]%>">
+</script>

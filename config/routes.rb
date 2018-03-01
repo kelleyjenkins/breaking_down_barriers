@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root "home#index"
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'
@@ -11,15 +12,13 @@ Rails.application.routes.draw do
     resource :profiles
   end
 
-  resources :profiles
+  resources :profiles, only: [:new, :create, :edit, :update]
 
   resources :sessions, only: [:new, :create, :destroy]
 
   resources :home, only: [:show]
 
-  resources :jobs, only: [:index]
-
-  root "home#index"
+  resources :jobs, only: [:index, :show]
 
   resources :employers do
     resources :jobs, only: [:edit, :new, :create, :update, :destroy]
