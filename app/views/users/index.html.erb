@@ -1,15 +1,16 @@
+<div class="profiles">
 <% @users.each do |user| %>
-<div class="card" style="width: 20rem;">
+<div class="user-index">
   <% if user.profile != nil %>
   <img class="card-img-top" src= "<%=user.profile.profile_pic%>" alt="Card image cap">
   <% end %>
-  <div class="card-block">
-    <h4 class="card-title"> <%=user.name%></h4>
+
+    <h4>  <%=user.name%></h4>
     <% if user.profile != nil %>
     <p class="card-text"> <%= user.profile.summary %></p>
     <a href= "/users/<%="#{user.id}"%>" class="btn btn-primary">See Full Profile</a>
     <% end %>
-    <%= link_to "Add Mentor", mentorships_path(:mentor_id => user), :method => :post %>
-    <% end %>
+    <%= link_to "Add Mentor", mentorships_path(:mentor_id => user), :method => :post %></br>
   </div>
+    <% end %>
 </div>

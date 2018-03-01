@@ -70,3 +70,18 @@ button:hover, a:hover {
   display: inline-block;
   font-size: 14px;
 }
+
+.user-index{
+    display: inline-flex;
+    align-items: center;
+    flex-flow: column;
+    text-align: center;
+    width: 250px;
+    margin: 30px;
+    background-color: #BEB9B5;
+    border: 1px solid black;
+}
+
+.card-img-top {
+  padding-top: 35px;
+}

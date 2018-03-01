@@ -6,16 +6,18 @@ Rails.application.routes.draw do
   post '/login', to: "sessions#create"
 
   resources :mentorships
+
   resources :users do
     resource :profiles
   end
+
   resources :profiles
 
   resources :sessions, only: [:new, :create, :destroy]
+
   resources :home, only: [:show]
 
   resources :jobs, only: [:index]
-
 
   root "home#index"
 
@@ -23,4 +25,9 @@ Rails.application.routes.draw do
     resources :jobs, only: [:edit, :new, :create, :update, :destroy]
   end
 
+  namespace :api do
+    namespace :v1 do
+      get '/jobs', to: 'jobs#index'
+    end
+  end
 end
