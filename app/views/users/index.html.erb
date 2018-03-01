@@ -11,7 +11,9 @@
     <a href= "/users/<%="#{user.id}"%>" class="btn btn-primary">See Full Profile</a>
     <% end %><br/>
     <% unless user == current_user %>
-    <%= link_to "Add Mentor", mentorships_path(:mentor_id => user), :method => :post %></br>
+      <% if user.profile.mentor == "Active" %>
+        <%= link_to "Add Mentor", mentorships_path(:mentor_id => user), :method => :post %></br>
+      <% end %>
     <% end %>
   </div>
     <% end %>
