@@ -6,8 +6,7 @@ class JobsController < ApplicationController
   end
 
   def show
-    employer = Employer.find(params[:employer_id])
-    @job = employer.jobs.find(params[:id])
+    @job = Job.find(params[:id])
   end
 
   def new

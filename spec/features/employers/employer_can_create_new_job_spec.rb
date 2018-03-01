@@ -8,18 +8,15 @@ describe "Employer Creates a Job" do
 
     visit employer_path(employer)
 
-    within(".new-job") do
     click_on "Add New Job"
-    end
 
     expect(current_path).to eq(new_employer_job_path(employer))
 
     fill_in "job[title]", :with => "Web Developer"
     fill_in "job[description]", :with => "It's an awesome job!"
 
-    click_button "Create Job"
+    click_on "Create Job"
 
-    expect(current_path).to eq(employer_jobs_path(employer))
     expect(page).to have_content("Web Developer")
     expect(page).to have_content("It's an awesome job!")
   end

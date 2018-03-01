@@ -3,7 +3,7 @@
 <div class="card">
   <h2><%=@user.name %></h2>
     <% unless @user.profile.blank? %>
-      <%= image_tag @user.profile.profile_pic  %>
+      <div class="user-image"><%= image_tag @user.profile.profile_pic  %></div>
   <p class="summary"> <%= @user.profile.summary %></p>
       <p> Skills: <%= @user.profile.skills %></p>
       <p> Address: <%= @user.profile.full_address %></p>
