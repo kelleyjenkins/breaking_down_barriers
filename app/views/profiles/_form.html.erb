@@ -13,6 +13,8 @@
     <%= f.label :skills %><br/>
     <%= f.text_area :skills %><br/>
     <%= f.label :profile_pic %>
-    <%= f.text_field :profile_pic %>
+    <%= f.text_field :profile_pic %><br/>
+    <%= f.label :mentor %>
+    <%= f.select :mentor, options_for_select(Profile.mentors.map {|k, v| [k, k]}) %><br/>
     <%= f.submit %>
   <% end %>
