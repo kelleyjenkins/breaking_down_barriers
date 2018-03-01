@@ -33,6 +33,7 @@ gem 'geocoder'
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'jquery-rails'
 gem 'bootstrap_form'
+gem 'active_model_serializers', '~> 0.10.0'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
