@@ -1,20 +1,24 @@
-<h1><%= @employer.company_name %> Dashboard</h1>
+<h1><%= @employer.company_name %></h1>
 
 <h3> Company Info </h3>
-<%= @employer.email %><br/>
-<%= @employer.street_address %>,
+Email: <%= @employer.email %><br/>
+Address: <%= @employer.street_address %>,
 <%= @employer.city %>,
 <%= @employer.state %> <br/><br/>
 
-<%= link_to "Edit Company Information", edit_employer_path(@employer) %>
+<% if @employer == current_employer %>
+<%= link_to "Edit Company Information", edit_employer_path(@employer) %></br>
+<%= link_to "Add New Job", new_employer_job_path(@employer) %>
+<% end %>
 
 
-<h3> Jobs </h3>
-<button class="new-job"><%= link_to "Add New Job", new_employer_job_path(@employer) %></button>
+<h3> Jobs </h3></br>
 <div class="job">
 <% @employer.jobs.each do |job| %>
-<%= job.title %>
-<%= job.description %>
+Title: <%= job.title %></br>
+Description: <%= job.description %></br>
+<% if @employer == current_employer %>
 <%= link_to "Edit Job", edit_employer_job_path(@employer, job) %>
-<%= link_to 'Delete', [job.employer, job], :method => :delete %></div>
-<% end  %>
+<%= link_to 'Delete', [job.employer, job], :method => :delete %></div></br>
+<% end  %></br><br>
+<% end %>

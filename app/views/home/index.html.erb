@@ -1,1 +1,37 @@
 
+<% if current_user%>
+  <h2> Welcome <%= current_user.name%>!</h2>
+  <h4> <%=  link_to "My Profile", user_path(current_user) %></h4>
+
+<%elsif current_employer %>
+  <h2> Welcome <%= current_employer.company_name%>!</h2>
+  <h4><%= link_to "My Profile", employer_path(current_employer)  %></h4>
+<% end  %>
+
+<div class="box">
+<p class="intro"> The Bureau of Justice Statistics found that 76% of inmates released from state prisons will re-offend within 5 years (45% for federal prisons). Employment upon release from prison dramatically reduces the likelihood that someone will re-offend.</br></br>
+   Breaking Down Barriers connects fromerly incarcerated individuals with employers who readily hire people with criminal records.  </p>
+</div>
+
+<div class="home-page">
+
+  <div class="home-index">
+    <h4>Job Seeking</h4>
+    <p class="card-text"> Are you interested in finding jobs that won't turn you away because of your past? </p>
+     <button class="c-profile"><%= link_to "Sign In with Google", "/auth/google_oauth2" %></button>
+  </div>
+
+
+  <div class="home-index">
+    <h4>Employer</h4>
+    <p class="card-text"> Are you looking for hard working and reliable employees? </p></br>
+       <button class="c-profile"><%= link_to "Sign In", '/login' %></button>
+  </div>
+
+  <div class="home-index">
+    <h4>Mentor</h4>
+    <p class="card-text">Are you intersted in providing support to people re-entering the the job force?</p></br>
+    <button class="c-profile"><%= link_to "Sign In with Google", "/auth/google_oauth2" %></button>
+  </div>
+</div>
+</div>

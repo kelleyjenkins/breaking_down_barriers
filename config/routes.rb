@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resource :profiles
   end
 
-  resources :profiles
+  # resources :profiles
 
   resources :sessions, only: [:new, :create, :destroy]
 
