@@ -35,100 +35,50 @@
 <div id="map" style="height: 400px; width: 500px;"></div>
 
 <script async defer
-src="https://maps.googleapis.com/maps/api/js?&callback=initMap&key=<%=ENV["google_map_key"]%>">
+src="https://maps.googleapis.com/maps/api/js?v=3&key=<%=ENV["google_map_key"]%>&callback=initMap">
 </script>
+
 <script>
-//
-// var locations = []
-//
-function fetchJobs() {
-   fetch('http://localhost:3000/api/v1/users')
-  .then((response) => response.json())
-  .then((results) => { Object.keys(results).forEach(function(key){locations.push([results[key]["title"],results[key]["description"], results[key]["latitude"],results[key]["longitude"]])})})
-  .then... map
-  .catch((error) => console.error({ error }))}
 
-fetchJobs()
+var map;
 
-// locations = Promise.resolve(awesome).then(initMap());
-//
-//
-// function fetchJobs() {
-//   var things;
-//    fetch('http://localhost:3000/api/v1/users')
-//   .then((response) =>  response.json())
-//   .then((results) => things = Object.keys(results).map(function(key) { return ([results[key]["title"],results[key]["description"], results[key]["latitude"],results[key]["longitude"]])}))
-//   console.log(things)
-//   .catch((error) => console.error({ error }))
-// }
-//
-// fetchJobs()
-// var locations = []
-
-// var locations = fetchJobs().then((results) =>
-//     Object.keys(results).map(function(key) { return ([results[key]["title"],results[key]["description"], results[key]["latitude"],results[key]["longitude"]])}))
-//
-// console.log(locations)
-//
-//
-//
-//
-// fake_api_data = JSON.stringify( [
-//     {
-//        "lat": 39.7516374,
-//        "lng": -104.9972419,
-//        "company_name": "Target",
-//        "title": "Teacher",
-//        "job_url": "/jobs/1"
-//     },
-//     {
-//        "lat": 39.7832877,
-//        "lng": -104.8954512,
-//        "company_name": "June",
-//        "title": "Death",
-//        "job_url": "/jobs/1"
-//     }
-// ])
-
-parsed = JSON.parse(fake_api_data)
-
-function initMap() {
-  var map = new google.maps.Map(document.getElementById('map'), {
-  zoom: 10,
-  center: new google.maps.LatLng(<%=@user.profile.latitude%>, <%=@user.profile.longitude%>),
-  mapTypeId: google.maps.MapTypeId.ROADMAP
+function initMap()
+{
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 39.7392, lng: 104.9903},
+    zoom: 8
   });
 
-  // var locations = <%= raw @job_markers %>
-  //
-  // var locations = [
-  //   ['Me', '<%= @user.name %>', <%=@user.profile.latitude%>, <%=@user.profile.longitude%>]
-  // ];
-  //
-  // var results = Object.keys(parsed).forEach(function(key) { locations.push([parsed[key]["title"],parsed[key]["company_name"],parsed[key]["lat"],parsed[key]["lng"]])
-  // });
+  fetch('http://localhost:3000/api/v1/jobs')
+    .then(function(response){return response.json()})
+    .then(plotMarkers);
+}
 
 
-  var infowindow = new google.maps.InfoWindow();
+var locations;
+var bounds;
 
-  var marker, i;
+function plotMarkers(m)
+{
+  locations = [];
+  bounds = new google.maps.LatLngBounds();
 
-  for (i = 0; i < locations.length; i++) {
-    marker = new google.maps.Marker({
-      position: new google.maps.LatLng(locations[i][2], locations[i][3]),
-      map: map
-    });
+  m.forEach(function (location) {
+    var position = new google.maps.LatLng(location.latitude, location.longitude);
 
-    google.maps.event.addListener(marker, 'click', (function(marker, i) {
-      return function() {
-        infowindow.setContent("<b>" + locations[i][0] + "</b> <br/>" + locations[i][1]);
-        infowindow.open(map, marker);
-      }
-    })(marker, i));
-  }
+    locations.push(
+      new google.maps.Marker({
+        position: position,
+        map: map,
+        animation: google.maps.Animation.DROP
+      })
+    );
+    bounds.extend(position);
+  });
+
+  map.fitBounds(bounds);
 }
 </script>
-
 
 <%end %>
 <%end %>
