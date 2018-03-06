@@ -45,15 +45,14 @@ var map;
 function initMap()
 {
   map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 39.7392, lng: 104.9903},
+    center: {lat: <%= @user.profile.latitude%>, lng: <%= @user.profile.latitude%>},
     zoom: 8
   });
 
-  fetch('http://localhost:3000/api/v1/jobs')
+  fetch('https://sheltered-woodland-96290.herokuapp.com/api/v1/jobs')
     .then(function(response){return response.json()})
     .then(plotMarkers);
 }
-
 
 var locations;
 var bounds;
@@ -70,10 +69,11 @@ function plotMarkers(m)
       new google.maps.Marker({
         position: position,
         map: map,
-        animation: google.maps.Animation.DROP
+        animation: google.maps.Animation.DROP,
       })
     );
     bounds.extend(position);
+
   });
 
   map.fitBounds(bounds);
