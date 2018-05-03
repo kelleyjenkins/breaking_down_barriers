@@ -4,7 +4,7 @@ This app aims to connect formerly incarcerated individuals with employers and me
 
 
 ### Deployment
-Application is deployed at https://sheltered-woodland-96290.herokuapp.com/
+Application is deployed at https://sheltered-woodland-96290.herokuapp.com/  
 Jobs API Endpoint: https://sheltered-woodland-96290.herokuapp.com/api/v1/jobs
 
 ## Getting Started
