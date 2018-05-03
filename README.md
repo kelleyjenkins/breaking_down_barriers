@@ -3,7 +3,7 @@
 This app aims to connect formerly incarcerated individuals with employers and mentors willing to hire and assist them with stability and support during their transition back into society. Potential Employees/Mentors can login with Google OAuth while Employers login through the application. Employers can post jobs. Users can create a profile, save jobs, and add mentors. Users can opt into being a mentor and will appear available to other users if active. Location of users and jobs are geocoded and mapped for easy reference to local jobs. Includes an endpoint that returns all of the jobs listed in JSON format. 
 
 
-### Deployment
+## Deployment
 Application is deployed at https://sheltered-woodland-96290.herokuapp.com/  
 Jobs API Endpoint: https://sheltered-woodland-96290.herokuapp.com/api/v1/jobs
 
