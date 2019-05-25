@@ -1,8 +1,7 @@
 <% provide :head_tags do %>
     <script>
     document.addEventListener("DOMContentLoaded", function(){
-        initMap(<%= @user.profile.latitude%>, <%= @user.profile.longitude%>
-)
+        initMap(<%= @user.profile.latitude%>, <%= @user.profile.longitude%>)
     });
     </script>
 <% end %>
@@ -25,21 +24,24 @@
     <% end  %>
 </div>
 
-<h2>Mentors</h2>
-<%= link_to "Add Mentors", users_path %>
-<ul>
-  <%  @user.mentorships.each do |mentorship| %>
-    <li>
-      <%= mentorship.mentor.name %>
-      <% if @user == current_user %>(<%= link_to "remove", mentorship, :method => :delete %>) <%end %>
-    </li>
-  <% end %>
-</ul>
+<div class="mentors">
+  <h2>Mentors</h2>
+    <%= link_to "Add Mentors", users_path %>
+    <ul>
+      <%  @user.mentorships.each do |mentorship| %>
+        <li>
+          <%= mentorship.mentor.name %>
+          <% if @user == current_user %>(<%= link_to "remove", mentorship, :method => :delete %>) <%end %>
+        </li>
+      <% end %>
+    </ul>
+</div>
 
-
-<% if @user == current_user %>
-  <h3>Jobs Near You: </h3>
-  <% if @user.profile != nil %>
-    <div id="map" style="height: 400px; width: 500px;"></div>
+<div class="jobs-map">
+  <% if @user == current_user %>
+    <h3>Jobs Near You: </h3>
+    <% if @user.profile != nil %>
+      <div id="map" style="height: 400px; width: 500px;"></div>
+    <%end %>
   <%end %>
-<%end %>
+</div>

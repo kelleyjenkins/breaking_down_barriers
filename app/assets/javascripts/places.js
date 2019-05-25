@@ -1,9 +1,9 @@
 var map;
-function initMap(lati, lngi)
+function initMap(lat, lng)
 {
 
   var map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: lati, lng: lngi},
+    center: {lat: lat, lng: lng},
     zoom: 8
   });
 
@@ -12,13 +12,10 @@ function initMap(lati, lngi)
     .then(plotMarkers);
 }
 
-var locations;
-var bounds;
 
 function plotMarkers(m)
 {
-  locations = [];
-  bounds = new google.maps.LatLngBounds();
+  var bounds = new google.maps.LatLngBounds();
 
   m.forEach(function (location) {
     var position = new google.maps.LatLng(location.latitude, location.longitude);
