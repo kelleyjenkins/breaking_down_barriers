@@ -1,3 +1,11 @@
+<% provide :head_tags do %>
+    <script>
+    document.addEventListener("DOMContentLoaded", function(){
+        initMap(<%= @user.profile.latitude%>, <%= @user.profile.longitude%>)
+    });
+    </script>
+<% end %>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <div class="card">
@@ -16,69 +24,24 @@
     <% end  %>
 </div>
 
-<h2>Mentors</h2>
-<%= link_to "Add Mentors", users_path %>
-<ul>
-  <%  @user.mentorships.each do |mentorship| %>
-    <li>
-      <%= mentorship.mentor.name %>
-      <% if @user == current_user %>(<%= link_to "remove", mentorship, :method => :delete %>) <%end %>
-    </li>
-  <% end %>
-</ul>
+<div class="mentors">
+  <h2>Mentors</h2>
+    <%= link_to "Add Mentors", users_path %>
+    <ul>
+      <%  @user.mentorships.each do |mentorship| %>
+        <li>
+          <%= mentorship.mentor.name %>
+          <% if @user == current_user %>(<%= link_to "remove", mentorship, :method => :delete %>) <%end %>
+        </li>
+      <% end %>
+    </ul>
+</div>
 
-
-<% if @user == current_user %>
-<h3>Jobs Near You: </h3>
-
-<% if @user.profile != nil %>
-<div id="map" style="height: 400px; width: 500px;"></div>
-
-<script async defer
-src="https://maps.googleapis.com/maps/api/js?v=3&key=<%=ENV["google_map_key"]%>&callback=initMap">
-</script>
-
-<script>
-
-var map;
-
-function initMap()
-{
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: <%= @user.profile.latitude%>, lng: <%= @user.profile.latitude%>},
-    zoom: 8
-  });
-
-  fetch('https://sheltered-woodland-96290.herokuapp.com/api/v1/jobs')
-    .then(function(response){return response.json()})
-    .then(plotMarkers);
-}
-
-var locations;
-var bounds;
-
-function plotMarkers(m)
-{
-  locations = [];
-  bounds = new google.maps.LatLngBounds();
-
-  m.forEach(function (location) {
-    var position = new google.maps.LatLng(location.latitude, location.longitude);
-
-    locations.push(
-      new google.maps.Marker({
-        position: position,
-        map: map,
-        animation: google.maps.Animation.DROP,
-      })
-    );
-    bounds.extend(position);
-
-  });
-
-  map.fitBounds(bounds);
-}
-</script>
-
-<%end %>
-<%end %>
+<div class="jobs-map">
+  <% if @user == current_user %>
+    <h3>Jobs Near You: </h3>
+    <% if @user.profile != nil %>
+      <div id="map" style="height: 400px; width: 500px;"></div>
+    <%end %>
+  <%end %>
+</div>
