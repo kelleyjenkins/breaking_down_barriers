@@ -30,7 +30,7 @@ gem "omniauth-google-oauth2", "~> 0.2.1"
 gem 'figaro'
 gem 'omniauth-facebook'
 gem 'geocoder'
-gem 'bootstrap-sass', '~> 3.3.7'
+gem "bootstrap-sass", ">= 3.4.1"
 gem 'jquery-rails'
 gem 'bootstrap_form'
 gem 'active_model_serializers', '~> 0.10.0'
